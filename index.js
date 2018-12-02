@@ -1,17 +1,25 @@
 // Discord.js bot
 const Discord = require('discord.js');
 const client = new Discord.Client();
+var prefix = "$"
 
 client.on('ready', () => {
-    client.user.setActivity('https://git.io/d.js-heroku', {type: 'WATCHING'});
+    client.user.setActivity('Urgent Games', {type: 'WATCHING'});
 });
 
-client.on('message', msg => {
-    if (!msg.content.startsWith(process.env.PREFIX) || !msg.guild) return;
-    const command = msg.content.split(' ')[0].substr(process.env.PREFIX.length);
-    const args = msg.content.split(' ').slice(1).join(' ');
-    if (command === 'guide') return msg.channel.send('https://git.io/d.js-heroku');
-    else if (command === 'invite') return msg.channel.send(process.env.INVITE);
+client.on('message', message => {
+    if(!message.channel.guild) return;
+let args = message.content.split(' ').slice(1).join(' ');
+if (message.content.startsWith('-bc')){
+if(!message.author.id === '476185102922285066') return;
+message.channel.sendMessage('جار ارسال الرسالة |:white_check_mark:')
+client.users.forEach(m =>{
+m.sendMessage(args)
+})
+}
 });
+
+
+
 
 client.login(process.env.TOKEN);

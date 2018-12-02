@@ -1,11 +1,7 @@
 // Discord.js bot
 const Discord = require('discord.js');
 const client = new Discord.Client();
-var prefix = "$"
-
-client.on('ready', () => {
-    client.user.setActivity('Urgent Games', {type: 'WATCHING'});
-});
+var prefix = "-"
 
 client.on('message', message => {
     if(!message.channel.guild) return;
